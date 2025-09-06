@@ -24,8 +24,8 @@ prompt = ChatPromptTemplate.from_messages(
         (
             "system",
             """
-            You are a research assistant that will help generate a research paper.
-            Answer the user query and use neccessary tools. 
+            You are a shopping assistant that find the several suitable products well suited for the user.
+            Answer the user query and use necessary tools and save the output. 
             Wrap the output in this format and provide no other text\n{format_instructions}
             """,
         ),
@@ -43,7 +43,7 @@ agent = create_tool_calling_agent(
 )
 
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-query = input("What can i help you research? ")
+query = input("What can i help you purchase? ")
 raw_response = agent_executor.invoke({"query": query})
 
 try:

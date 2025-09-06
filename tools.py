@@ -1,5 +1,5 @@
-from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun
-from langchain_community.utilities import WikipediaAPIWrapper
+from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun, GoogleSearchRun
+from langchain_community.utilities import WikipediaAPIWrapper, GoogleSearchAPIWrapper
 from langchain.tools import Tool
 from datetime import datetime
 
@@ -24,7 +24,16 @@ search_tool = Tool(
     func=search.run,
     description="Search the web for information",
 )
+# g_search_api = GoogleSearchAPIWrapper()
+# g_search = GoogleSearchRun()
+# g_search_tool = Tool(
+#     name="google_search",
+#     func=g_search.run,
+#     description="Search google for information",
+# )
 
 api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=100)
 wiki_tool = WikipediaQueryRun(api_wrapper=api_wrapper)
+
+
 
